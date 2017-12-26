@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -7,38 +6,26 @@ import {
 } from '../constants';
 
 
-const store = {
+const defaultStore = {
   isAuth: false,
   isLoading: false,
   token: null,
 };
 
-function parseToken(token) {
-  try {
-    return {
-      raw: token,
-      payload: jwt.decode(token),
-    };
-  } catch (e) {
-    return null;
-  }
-}
-
-const auth = (state = store, action) => {
+const auth = (state = defaultStore, action) => {
   switch (action.type) {
     case SIGN_IN:
       return { ...state, isAuth: false, isLoading: true };
     case SIGN_IN_SUCCESS:
       return {
-        ...state,
         isAuth: true,
         isLoading: false,
-        token: parseToken(action.payload.token),
+        ...action.payload,
       };
     case SIGN_IN_FAIL:
       return { ...state, isLoading: false };
     case SIGN_OUT:
-      return { ...state, isAuth: false, isLoading: false };
+      return defaultStore;
     default:
       return state;
   }

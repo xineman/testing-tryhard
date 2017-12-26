@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { NotificationManager } from 'react-notifications';
 import api from '../api';
 import {
@@ -10,7 +11,7 @@ import {
 export const getUser = () => (dispatch, getState) => {
   dispatch({ type: SET_USER });
 
-  api.getUserData({ token: getState().auth.token.raw })
+  api.getUserData({ token: getState().auth.token })
     .then(data => dispatch({
       type: SET_USER_SUCCESS,
       payload: data,
@@ -20,6 +21,3 @@ export const getUser = () => (dispatch, getState) => {
       dispatch({ type: SET_USER_FAIL });
     });
 };
-
-export const test = 0;
-

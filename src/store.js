@@ -12,7 +12,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const state = {
-  auth: get('auth') || undefined,
+  auth: {
+    ...(get('auth') || {}),
+    isLoading: false,
+  },
 };
 
 const store = createStore(

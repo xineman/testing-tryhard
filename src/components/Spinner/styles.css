@@ -1,0 +1,92 @@
+.overlay {
+  position: absolute;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(237, 238, 239, .8);
+  border-radius: 5px;
+  transition: .3s;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  max-height: 100%;
+  text-indent: -9999em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+}
+
+.loader {
+  background: orange;
+  animation: lines 1s infinite ease-in-out;
+  width: 10px;
+  height: 40px;
+  margin: 0 5px;
+}
+
+.dots {
+  animation: dots 1.4s infinite ease-in-out both;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.first {
+  animation-delay: -0.32s;
+}
+
+.second {
+  animation-delay: -0.16s;
+}
+
+
+:global(.spinner-enter) {
+  opacity: 0.01;
+}
+
+:global(.spinner-enter.spinner-enter-active) {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+:global(.spinner-leave) {
+  opacity: 1;
+}
+
+:global(.spinner-leave.spinner-leave-active) {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+:global(.spinner-appear) {
+  opacity: 0.01;
+}
+
+:global(.spinner-appear.spinner-appear-active) {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+@keyframes lines {
+  0%,
+  80%,
+  100% {
+    transform: scaleY(0.9);
+  }
+  40% {
+    transform: scaleY(1.4);
+  }
+}
+
+@keyframes dots {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  } 40% { 
+    transform: scale(1.0);
+  }
+}

@@ -1,7 +1,9 @@
 .form {
   display: block;
+  padding: 15px;
+  position: relative;
   margin: auto;
-  max-width: 400px;
+  max-width: 350px;
 }
 .inputWrapper {
   display: flex;
@@ -12,6 +14,6 @@
 .input {
   border: 1px solid orange;
   width: 200px;
-  height: 30px;
+  height: 25px;
   padding: 0 10px;
 }

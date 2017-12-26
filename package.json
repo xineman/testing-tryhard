@@ -10,8 +10,6 @@
     "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
-    "axios": "^0.17",
-    "babel-polyfill": "^6.26.0",
     "jsonwebtoken": "^8.1.0",
     "prop-types": "^15.5.10",
     "react": "^16.2.0",

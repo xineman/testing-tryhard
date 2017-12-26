@@ -23,7 +23,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.props.getUser();
+    if (this.props.auth) {
+      this.props.getUser();
+    }
   }
   render() {
     return (
