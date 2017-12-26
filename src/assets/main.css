@@ -1,0 +1,53 @@
+@import './vars.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $open-sans;
+}
+
+:global(
+  .button {
+    display: block;
+    width: 100px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid orange;
+    background: #FFF;
+    color: orange;
+    margin: auto;
+    transition: .25s;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .button:hover {
+    background: orange;
+    color: #FFF;
+  }
+)
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url("./fonts/opensans/opensans-light-webfont.woff2") format("woff2"), url("./fonts/opensans/opensans-light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal; }
+@font-face {
+  font-family: 'OpenSans';
+  src: url("./fonts/opensans/opensans-regular-webfont.woff2") format("woff2"), url("./fonts/opensans/opensans-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal; }
+@font-face {
+  font-family: 'OpenSans';
+  src: url("./fonts/opensans/opensans-semibold-webfont.woff2") format("woff2"), url("./fonts/opensans/opensans-semibold-webfont.woff") format("woff");
+  font-weight: 600;
+  font-style: normal; }
+@font-face {
+  font-family: 'OpenSans';
+  src: url("./fonts/opensans/opensans-bold-webfont.woff2") format("woff2"), url("./fonts/opensans/opensans-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal; }

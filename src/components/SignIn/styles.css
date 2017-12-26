@@ -1,0 +1,17 @@
+.form {
+  display: block;
+  margin: auto;
+  max-width: 400px;
+}
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.input {
+  border: 1px solid orange;
+  width: 200px;
+  height: 30px;
+  padding: 0 10px;
+}

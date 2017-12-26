@@ -1,0 +1,15 @@
+.infoContainer {
+  width: 150px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.text {
+  font-size: 14px;
+  font-weight: 400;
+}
+.textBold {
+  composes: text;
+  font-weight: 700;
+}
