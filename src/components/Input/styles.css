@@ -1,0 +1,17 @@
+.container {
+  position: relative;
+}
+.input {
+  border: 1px solid orange;
+  width: 200px;
+  height: 25px;
+  padding: 0 10px;
+  margin-bottom: 16px;
+}
+.errorMessage {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: brown;
+  font-size: 12px;
+}

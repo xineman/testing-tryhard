@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import styles from './styles.css';
 import { login, getUser } from '../../actions';
 import Spinner from '../Spinner';
+import Input from '../Input';
 
 class SignIn extends Component {
   static propTypes = {
@@ -21,19 +22,34 @@ class SignIn extends Component {
     this.state = {
       username: '',
       password: '',
+      valid: {
+        username: false,
+        password: false,
+      },
+      showErrors: false,
     };
   }
 
   handleChange({ target: input }) {
     this.setState({
       [input.name]: input.value,
+      valid: {
+        ...this.state.valid,
+        [input.name]: RegExp(input.pattern).test(input.value),
+      },
     });
   }
 
   handleLogin(e) {
     e.preventDefault();
-    this.props.login(this.state)
-      .then(() => this.props.getUser());
+    this.setState({
+      showErrors: true,
+    });
+    if (Object.values(this.state.valid).every(i => i)) {
+      const { username, password } = this.state;
+      this.props.login({ username, password })
+        .then(() => this.props.getUser());
+    }
   }
 
   render() {
@@ -43,27 +59,33 @@ class SignIn extends Component {
         <Spinner show={this.props.auth.isLoading} />
         <div className={styles.inputWrapper}>
           <label htmlFor="username">Username:</label>
-          <input
-            className={styles.input}
-            type="text"
+          <Input
+            type="email"
             name="username"
             id="username"
             value={this.state.username}
             onChange={e => this.handleChange(e)}
+            invalid={!this.state.valid.username}
+            showErrors={this.state.showErrors}
+            placeholder="john@example.com"
+            pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
           />
         </div>
         <div className={styles.inputWrapper}>
           <label htmlFor="password">Password:</label>
-          <input
-            className={styles.input}
+          <Input
             type="password"
             name="password"
             id="password"
             value={this.state.password}
             onChange={e => this.handleChange(e)}
+            invalid={!this.state.valid.password}
+            showErrors={this.state.showErrors}
+            placeholder="8-15 symbols"
+            pattern={'^.{8,15}$'}
           />
         </div>
-        <button type="submit" className="button">Login</button>
+        <button type="submit" className={`button ${styles.submit}`}>Login</button>
       </form>
     );
   }
