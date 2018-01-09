@@ -6,7 +6,6 @@ const { EnvironmentPlugin } = require('webpack');
 
 module.exports = {
   entry: [
-    'babel-polyfill',
     './src/index.jsx',
   ],
   output: {

@@ -4,6 +4,7 @@ const path = require('path');
 const {
   HotModuleReplacementPlugin,
   NamedModulesPlugin,
+  NoEmitOnErrorsPlugin,
 } = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
@@ -19,18 +20,14 @@ module.exports = merge.strategy({ entry: 'prepend' })(common, {
     port: 8080,
     historyApiFallback: true,
     hot: true,
-    contentBase: path.resolve(__dirname, '../dist'),
-    publicPath: '/',
     overlay: {
       warnings: true,
       errors: true,
-    },
-    watchOptions: {
-      poll: true,
     },
   },
   plugins: [
     new HotModuleReplacementPlugin(),
     new NamedModulesPlugin(),
+    new NoEmitOnErrorsPlugin(),
   ],
 });
