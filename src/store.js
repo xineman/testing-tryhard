@@ -13,7 +13,9 @@ if (process.env.NODE_ENV === 'development') {
 
 const state = {
   auth: {
-    ...(get('auth') || {}),
+    ...(get('auth') || {
+      isAuth: false,
+    }),
     isLoading: false,
   },
 };
